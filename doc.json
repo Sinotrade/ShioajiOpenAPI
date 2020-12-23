@@ -1,0 +1,3430 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Solace Server API",
+    "version": "0.0.1"
+  },
+  "paths": {
+    "/api/v1/auth/login": {
+      "post": {
+        "summary": "Login",
+        "operationId": "login_api_v1_auth_login_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/logout": {
+      "post": {
+        "summary": "Logout",
+        "operationId": "logout_api_v1_auth_logout_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/LogoutOut"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyBody": []
+          }
+        ]
+      }
+    },
+    "/api/v1/auth/b64validation": {
+      "post": {
+        "summary": "B64Validation",
+        "operationId": "b64validation_api_v1_auth_b64validation_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/B64Validation"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/B64ValidationOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyBody": []
+          }
+        ]
+      }
+    },
+    "/api/v1/auth/error_tracking": {
+      "post": {
+        "summary": "Error Tracking",
+        "operationId": "error_tracking_api_v1_auth_error_tracking_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/ErrorTrackingInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorTrackingOutput"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyBody": []
+          }
+        ]
+      }
+    },
+    "/api/v1/order/place_order": {
+      "post": {
+        "summary": "Place Order",
+        "operationId": "place_order_api_v1_order_place_order_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_place_order_api_v1_order_place_order_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "STS Server Error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/STSErrorResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/swrelaystation__api__v1__schema__trade__Trade"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyBody": []
+          },
+          {
+            "APIKeyBody": []
+          }
+        ]
+      }
+    },
+    "/api/v1/order/cancel_order": {
+      "post": {
+        "summary": "Cancel Order",
+        "operationId": "cancel_order_api_v1_order_cancel_order_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_cancel_order_api_v1_order_cancel_order_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "STS Server Error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/STSErrorResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderStatus"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyBody": []
+          },
+          {
+            "APIKeyBody": []
+          }
+        ]
+      }
+    },
+    "/api/v1/order/update_price": {
+      "post": {
+        "summary": "Update Price",
+        "operationId": "update_price_api_v1_order_update_price_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_update_price_api_v1_order_update_price_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "STS Server Error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/STSErrorResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderStatus"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyBody": []
+          },
+          {
+            "APIKeyBody": []
+          }
+        ]
+      }
+    },
+    "/api/v1/order/update_qty": {
+      "post": {
+        "summary": "Update Qty",
+        "operationId": "update_qty_api_v1_order_update_qty_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_update_qty_api_v1_order_update_qty_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "STS Server Error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/STSErrorResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderStatus"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyBody": []
+          },
+          {
+            "APIKeyBody": []
+          }
+        ]
+      }
+    },
+    "/api/v1/order/update_status": {
+      "post": {
+        "summary": "Update Status",
+        "operationId": "update_status_api_v1_order_update_status_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStatusIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "title": "Response Update Status Api V1 Order Update Status Post",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/swrelaystation__api__v1__endpoints__order__update_status__Trade"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyBody": []
+          }
+        ]
+      }
+    },
+    "/api/v1/dev/dependdb": {
+      "post": {
+        "summary": "Dependdb",
+        "operationId": "dependdb_api_v1_dev_dependdb_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_dependdb_api_v1_dev_dependdb_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/swrelaystation__api__v1__endpoints__dev__dependb__OrderFake"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dev/echo": {
+      "post": {
+        "summary": "Echo",
+        "operationId": "echo_api_v1_dev_echo_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_echo_api_v1_dev_echo_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/swrelaystation__api__v1__endpoints__dev__echo__OrderFake"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/data/kbars": {
+      "post": {
+        "summary": "Kbars",
+        "operationId": "kbars_api_v1_data_kbars_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/KbarInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kbars"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyBody": []
+          }
+        ]
+      }
+    },
+    "/api/v1/data/ticks": {
+      "post": {
+        "summary": "Ticks",
+        "operationId": "ticks_api_v1_data_ticks_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/TicksInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ticks"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyBody": []
+          }
+        ]
+      }
+    },
+    "/api/v1/data/contracts": {
+      "post": {
+        "summary": "Contracts",
+        "operationId": "contracts_api_v1_data_contracts_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/ContractsInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContractsOutput"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyBody": []
+          }
+        ]
+      }
+    },
+    "/api/v1/data/snapshots": {
+      "post": {
+        "summary": "Snapshots",
+        "operationId": "snapshots_api_v1_data_snapshots_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/SnapshotsInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/Snapshots"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyBody": []
+          },
+          {
+            "APIKeyBody": []
+          }
+        ]
+      }
+    },
+    "/api/v1/data/short_stock_sources": {
+      "post": {
+        "summary": "Short Stock Sources",
+        "operationId": "short_stock_sources_api_v1_data_short_stock_sources_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/StockInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShortStockSources"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyBody": []
+          }
+        ]
+      }
+    },
+    "/api/v1/data/credit_enquire": {
+      "post": {
+        "summary": "Credit Enquire",
+        "operationId": "credit_enquire_api_v1_data_credit_enquire_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/CreditEnquireInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreditEnquires"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyBody": []
+          }
+        ]
+      }
+    },
+    "/api/v1/portfolio/position": {
+      "post": {
+        "summary": "Position",
+        "operationId": "position_api_v1_portfolio_position_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/Account"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/Positions"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyBody": []
+          },
+          {
+            "APIKeyBody": []
+          }
+        ]
+      }
+    },
+    "/api/v1/portfolio/position_unit": {
+      "post": {
+        "summary": "Position Unit",
+        "operationId": "position_unit_api_v1_portfolio_position_unit_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/PositionInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/Positions"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyBody": []
+          },
+          {
+            "APIKeyBody": []
+          }
+        ]
+      }
+    },
+    "/api/v1/portfolio/profit_loss": {
+      "post": {
+        "summary": "Profit Loss",
+        "operationId": "profit_loss_api_v1_portfolio_profit_loss_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfitLossIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfitLossList"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyBody": []
+          },
+          {
+            "APIKeyBody": []
+          }
+        ]
+      }
+    },
+    "/api/v1/portfolio/settlement": {
+      "post": {
+        "summary": "Settlement",
+        "operationId": "settlement_api_v1_portfolio_settlement_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/Account"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/Settlements"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyBody": []
+          },
+          {
+            "APIKeyBody": []
+          }
+        ]
+      }
+    },
+    "/api/v1/portfolio/account_balance": {
+      "post": {
+        "summary": "Account Balance",
+        "operationId": "account_balance_api_v1_portfolio_account_balance_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/Account"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountBalanceOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyBody": []
+          },
+          {
+            "APIKeyBody": []
+          }
+        ]
+      }
+    },
+    "/api/v1/portfolio/profit_loss_detail": {
+      "post": {
+        "summary": "Profit Loss Detail",
+        "operationId": "profit_loss_detail_api_v1_portfolio_profit_loss_detail_post",
+        "requestBody": {
+          "content": {
+            "application/smf": {
+              "schema": {
+                "$ref": "#/components/schemas/ProLossDetailIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/smf": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfitDetailList"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SOSValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyBody": []
+          },
+          {
+            "APIKeyBody": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "swrelaystation__api__v1__schema__contract__Contract": {
+        "title": "Contract",
+        "required": [
+          "security_type",
+          "exchange",
+          "code"
+        ],
+        "type": "object",
+        "properties": {
+          "security_type": {
+            "title": "Security Type",
+            "enum": [
+              "IND",
+              "STK",
+              "FUT",
+              "OPT"
+            ],
+            "type": "string"
+          },
+          "exchange": {
+            "title": "Exchange",
+            "enum": [
+              "TSE",
+              "OTC",
+              "OES",
+              "TAIFEX",
+              "TIM"
+            ],
+            "type": "string"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "symbol": {
+            "title": "Symbol",
+            "type": "string",
+            "default": ""
+          },
+          "name": {
+            "title": "Name",
+            "type": "string",
+            "default": ""
+          },
+          "currency": {
+            "title": "Currency",
+            "enum": [
+              "TWD"
+            ],
+            "type": "string",
+            "default": "TWD"
+          },
+          "category": {
+            "title": "Category",
+            "type": "string",
+            "default": ""
+          },
+          "delivery_month": {
+            "title": "Delivery Month",
+            "type": "string",
+            "default": ""
+          },
+          "strike_price": {
+            "title": "Strike Price",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "default": 0
+          },
+          "option_right": {
+            "title": "Option Right",
+            "enum": [
+              "",
+              "C",
+              "P"
+            ],
+            "type": "string",
+            "default": ""
+          },
+          "underlying_kind": {
+            "title": "Underlying Kind",
+            "type": "string",
+            "default": ""
+          },
+          "underlying_code": {
+            "title": "Underlying Code",
+            "type": "string",
+            "default": ""
+          },
+          "unit": {
+            "title": "Unit",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "default": 0
+          },
+          "multiplier": {
+            "title": "Multiplier",
+            "type": "integer",
+            "default": 0
+          },
+          "limit_up": {
+            "title": "Limit Up",
+            "type": "number",
+            "default": 0.0
+          },
+          "limit_down": {
+            "title": "Limit Down",
+            "type": "number",
+            "default": 0.0
+          },
+          "reference": {
+            "title": "Reference",
+            "type": "number",
+            "default": 0.0
+          },
+          "update_date": {
+            "title": "Update Date",
+            "type": "string",
+            "default": ""
+          },
+          "day_trade": {
+            "title": "Day Trade",
+            "enum": [
+              "Yes",
+              "OnlyBuy",
+              "No"
+            ],
+            "type": "string",
+            "default": "No"
+          },
+          "margin_trading_balance": {
+            "title": "Margin Trading Balance",
+            "type": "integer",
+            "default": 0
+          },
+          "short_selling_balance": {
+            "title": "Short Selling Balance",
+            "type": "integer",
+            "default": 0
+          }
+        }
+      },
+      "Account": {
+        "title": "Account",
+        "required": [
+          "account_type",
+          "person_id",
+          "broker_id",
+          "account_id"
+        ],
+        "type": "object",
+        "properties": {
+          "account_type": {
+            "title": "Account Type",
+            "enum": [
+              "S",
+              "F",
+              "H"
+            ],
+            "type": "string"
+          },
+          "person_id": {
+            "title": "Person Id",
+            "type": "string"
+          },
+          "broker_id": {
+            "title": "Broker Id",
+            "type": "string"
+          },
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "signed": {
+            "title": "Signed",
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "TradeOrder": {
+        "title": "TradeOrder",
+        "required": [
+          "action",
+          "price",
+          "quantity",
+          "account",
+          "id",
+          "seqno",
+          "ordno"
+        ],
+        "type": "object",
+        "properties": {
+          "action": {
+            "title": "Action",
+            "enum": [
+              "Buy",
+              "Sell"
+            ],
+            "type": "string"
+          },
+          "price": {
+            "title": "Price",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "quantity": {
+            "title": "Quantity",
+            "exclusiveMinimum": 0.0,
+            "type": "integer"
+          },
+          "account": {
+            "$ref": "#/components/schemas/Account"
+          },
+          "price_type": {
+            "title": "Price Type",
+            "anyOf": [
+              {
+                "enum": [
+                  "LMT",
+                  "MKT"
+                ],
+                "type": "string"
+              },
+              {
+                "enum": [
+                  "LMT",
+                  "Close",
+                  "LimitUp",
+                  "LimitDown"
+                ],
+                "type": "string"
+              },
+              {
+                "enum": [
+                  "LMT",
+                  "MKT",
+                  "MKP"
+                ],
+                "type": "string"
+              }
+            ],
+            "default": "LMT"
+          },
+          "order_type": {
+            "title": "Order Type",
+            "anyOf": [
+              {
+                "enum": [
+                  "ROD",
+                  "IOC",
+                  "FOK"
+                ],
+                "type": "string"
+              },
+              {
+                "enum": [
+                  "Common",
+                  "BlockTrade",
+                  "Fixing",
+                  "Odd",
+                  "IntradayOdd"
+                ],
+                "type": "string"
+              }
+            ],
+            "default": "ROD"
+          },
+          "octype": {
+            "title": "Octype",
+            "enum": [
+              "Auto",
+              "New",
+              "Cover",
+              "DayTrade"
+            ],
+            "type": "string",
+            "default": "Auto"
+          },
+          "order_lot": {
+            "title": "Order Lot",
+            "enum": [
+              "Common",
+              "BlockTrade",
+              "Fixing",
+              "Odd",
+              "IntradayOdd"
+            ],
+            "type": "string",
+            "default": "Common"
+          },
+          "order_cond": {
+            "title": "Order Cond",
+            "enum": [
+              "Cash",
+              "Netting",
+              "MarginTrading",
+              "ShortSelling",
+              "Emerging"
+            ],
+            "type": "string",
+            "default": "Cash"
+          },
+          "market_type": {
+            "title": "Market Type",
+            "enum": [
+              "Day",
+              "Night"
+            ],
+            "type": "string",
+            "default": "Day"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "seqno": {
+            "title": "Seqno",
+            "type": "string"
+          },
+          "ordno": {
+            "title": "Ordno",
+            "type": "string"
+          },
+          "ca": {
+            "title": "Ca",
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
+      "Body_cancel_order_api_v1_order_cancel_order_post": {
+        "title": "Body_cancel_order_api_v1_order_cancel_order_post",
+        "required": [
+          "contract",
+          "order"
+        ],
+        "type": "object",
+        "properties": {
+          "contract": {
+            "$ref": "#/components/schemas/swrelaystation__api__v1__schema__contract__Contract"
+          },
+          "order": {
+            "$ref": "#/components/schemas/TradeOrder"
+          },
+          "tft": {
+            "title": "Tft",
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "AccountUser": {
+        "title": "AccountUser",
+        "required": [
+          "account_type",
+          "person_id",
+          "broker_id",
+          "account_id",
+          "username"
+        ],
+        "type": "object",
+        "properties": {
+          "account_type": {
+            "title": "Account Type",
+            "enum": [
+              "S",
+              "F",
+              "H"
+            ],
+            "type": "string"
+          },
+          "person_id": {
+            "title": "Person Id",
+            "type": "string"
+          },
+          "broker_id": {
+            "title": "Broker Id",
+            "type": "string"
+          },
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "signed": {
+            "title": "Signed",
+            "type": "boolean",
+            "default": true
+          },
+          "username": {
+            "title": "Username",
+            "type": "string"
+          }
+        }
+      },
+      "LoginOut": {
+        "title": "LoginOut",
+        "required": [
+          "token",
+          "accounts",
+          "detail",
+          "ip_address"
+        ],
+        "type": "object",
+        "properties": {
+          "token": {
+            "title": "Token",
+            "type": "string"
+          },
+          "accounts": {
+            "title": "Accounts",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountUser"
+            }
+          },
+          "detail": {
+            "title": "Detail",
+            "type": "string"
+          },
+          "ip_address": {
+            "title": "Ip Address",
+            "type": "string"
+          },
+          "client_name": {
+            "title": "Client Name",
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
+      "Deal": {
+        "title": "Deal",
+        "required": [
+          "seq",
+          "price",
+          "quantity",
+          "ts"
+        ],
+        "type": "object",
+        "properties": {
+          "seq": {
+            "title": "Seq",
+            "type": "string"
+          },
+          "price": {
+            "title": "Price",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "quantity": {
+            "title": "Quantity",
+            "type": "integer"
+          },
+          "ts": {
+            "title": "Ts",
+            "type": "integer"
+          }
+        }
+      },
+      "OrderStatus": {
+        "title": "OrderStatus",
+        "required": [
+          "id",
+          "status",
+          "status_code"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "enum": [
+              "Cancelled",
+              "Filled",
+              "PartFilled",
+              "Inactive",
+              "Failed",
+              "PendingSubmit",
+              "PreSubmitted",
+              "Submitted"
+            ]
+          },
+          "status_code": {
+            "title": "Status Code",
+            "type": "string"
+          },
+          "order_ts": {
+            "title": "Order Ts",
+            "type": "integer",
+            "default": 0
+          },
+          "modified_ts": {
+            "title": "Modified Ts",
+            "type": "integer",
+            "default": 0
+          },
+          "msg": {
+            "title": "Msg",
+            "type": "string",
+            "default": ""
+          },
+          "modified_price": {
+            "title": "Modified Price",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "default": 0
+          },
+          "deal_quantity": {
+            "title": "Deal Quantity",
+            "type": "integer",
+            "default": 0
+          },
+          "cancel_quantity": {
+            "title": "Cancel Quantity",
+            "type": "integer",
+            "default": 0
+          },
+          "deals": {
+            "title": "Deals",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Deal"
+            },
+            "default": []
+          }
+        }
+      },
+      "LogoutOut": {
+        "title": "LogoutOut",
+        "type": "object",
+        "properties": {
+          "logout_ts": {
+            "title": "Logout Ts",
+            "type": "integer",
+            "default": 0
+          }
+        }
+      },
+      "swrelaystation__api__v1__endpoints__dev__dependb__OrderFake": {
+        "title": "OrderFake",
+        "required": [
+          "orderid",
+          "price",
+          "qty"
+        ],
+        "type": "object",
+        "properties": {
+          "orderid": {
+            "title": "Orderid",
+            "type": "integer"
+          },
+          "price": {
+            "title": "Price",
+            "type": "number"
+          },
+          "qty": {
+            "title": "Qty",
+            "type": "integer"
+          }
+        }
+      },
+      "Body_dependdb_api_v1_dev_dependdb_post": {
+        "title": "Body_dependdb_api_v1_dev_dependdb_post",
+        "required": [
+          "order"
+        ],
+        "type": "object",
+        "properties": {
+          "order": {
+            "$ref": "#/components/schemas/swrelaystation__api__v1__endpoints__dev__dependb__OrderFake"
+          }
+        }
+      },
+      "ContractsOutput": {
+        "title": "ContractsOutput",
+        "required": [
+          "contracts",
+          "security_type",
+          "max_page"
+        ],
+        "type": "object",
+        "properties": {
+          "contracts": {
+            "title": "Contracts",
+            "type": "array",
+            "items": {}
+          },
+          "security_type": {
+            "title": "Security Type",
+            "enum": [
+              "IND",
+              "STK",
+              "FUT",
+              "OPT"
+            ],
+            "type": "string"
+          },
+          "max_page": {
+            "title": "Max Page",
+            "type": "integer"
+          }
+        }
+      },
+      "swrelaystation__api__v1__endpoints__order__update_status__Contract": {
+        "title": "Contract",
+        "required": [
+          "security_type",
+          "exchange",
+          "code"
+        ],
+        "type": "object",
+        "properties": {
+          "security_type": {
+            "title": "Security Type",
+            "enum": [
+              "IND",
+              "STK",
+              "FUT",
+              "OPT"
+            ],
+            "type": "string"
+          },
+          "exchange": {
+            "title": "Exchange",
+            "enum": [
+              "TSE",
+              "OTC",
+              "OES",
+              "TAIFEX",
+              "TIM"
+            ],
+            "type": "string"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "currency": {
+            "title": "Currency",
+            "enum": [
+              "TWD"
+            ],
+            "type": "string",
+            "default": "TWD"
+          }
+        }
+      },
+      "UpdateStatusOrder": {
+        "title": "UpdateStatusOrder",
+        "required": [
+          "action",
+          "price",
+          "quantity",
+          "account",
+          "price_type",
+          "order_type",
+          "id",
+          "seqno",
+          "ordno"
+        ],
+        "type": "object",
+        "properties": {
+          "action": {
+            "title": "Action",
+            "enum": [
+              "Buy",
+              "Sell"
+            ],
+            "type": "string"
+          },
+          "price": {
+            "title": "Price",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "quantity": {
+            "title": "Quantity",
+            "exclusiveMinimum": 0.0,
+            "type": "integer"
+          },
+          "account": {
+            "$ref": "#/components/schemas/Account"
+          },
+          "price_type": {
+            "title": "Price Type",
+            "anyOf": [
+              {
+                "enum": [
+                  "LMT",
+                  "MKT"
+                ],
+                "type": "string"
+              },
+              {
+                "enum": [
+                  "LMT",
+                  "Close",
+                  "LimitUp",
+                  "LimitDown"
+                ],
+                "type": "string"
+              },
+              {
+                "enum": [
+                  "LMT",
+                  "MKT",
+                  "MKP"
+                ],
+                "type": "string"
+              }
+            ]
+          },
+          "order_type": {
+            "title": "Order Type",
+            "anyOf": [
+              {
+                "enum": [
+                  "ROD",
+                  "IOC",
+                  "FOK"
+                ],
+                "type": "string"
+              },
+              {
+                "enum": [
+                  "Common",
+                  "BlockTrade",
+                  "Fixing",
+                  "Odd",
+                  "IntradayOdd"
+                ],
+                "type": "string"
+              }
+            ]
+          },
+          "octype": {
+            "title": "Octype",
+            "enum": [
+              "Auto",
+              "New",
+              "Cover",
+              "DayTrade"
+            ],
+            "type": "string",
+            "default": "Auto"
+          },
+          "order_lot": {
+            "title": "Order Lot",
+            "enum": [
+              "Common",
+              "BlockTrade",
+              "Fixing",
+              "Odd",
+              "IntradayOdd"
+            ],
+            "type": "string",
+            "default": "Common"
+          },
+          "order_cond": {
+            "title": "Order Cond",
+            "enum": [
+              "Cash",
+              "Netting",
+              "MarginTrading",
+              "ShortSelling",
+              "Emerging"
+            ],
+            "type": "string",
+            "default": "Cash"
+          },
+          "market_type": {
+            "title": "Market Type",
+            "enum": [
+              "Day",
+              "Night"
+            ],
+            "type": "string",
+            "default": "Day"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "seqno": {
+            "title": "Seqno",
+            "type": "string"
+          },
+          "ordno": {
+            "title": "Ordno",
+            "type": "string"
+          }
+        }
+      },
+      "swrelaystation__api__v1__endpoints__order__update_status__Trade": {
+        "title": "Trade",
+        "required": [
+          "contract",
+          "order",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "contract": {
+            "$ref": "#/components/schemas/swrelaystation__api__v1__endpoints__order__update_status__Contract"
+          },
+          "order": {
+            "$ref": "#/components/schemas/UpdateStatusOrder"
+          },
+          "status": {
+            "$ref": "#/components/schemas/OrderStatus"
+          }
+        }
+      },
+      "PositionInput": {
+        "title": "PositionInput",
+        "required": [
+          "account"
+        ],
+        "type": "object",
+        "properties": {
+          "account": {
+            "$ref": "#/components/schemas/Account"
+          },
+          "unit": {
+            "title": "Unit",
+            "enum": [
+              "Common",
+              "Share"
+            ],
+            "type": "string",
+            "default": "Common"
+          }
+        }
+      },
+      "swrelaystation__api__v1__endpoints__dev__echo__OrderFake": {
+        "title": "OrderFake",
+        "required": [
+          "orderid",
+          "price",
+          "qty"
+        ],
+        "type": "object",
+        "properties": {
+          "orderid": {
+            "title": "Orderid",
+            "type": "integer"
+          },
+          "price": {
+            "title": "Price",
+            "type": "number"
+          },
+          "qty": {
+            "title": "Qty",
+            "type": "integer"
+          }
+        }
+      },
+      "BaseContract": {
+        "title": "BaseContract",
+        "required": [
+          "security_type",
+          "exchange",
+          "code"
+        ],
+        "type": "object",
+        "properties": {
+          "security_type": {
+            "title": "Security Type",
+            "enum": [
+              "IND",
+              "STK",
+              "FUT",
+              "OPT"
+            ],
+            "type": "string"
+          },
+          "exchange": {
+            "title": "Exchange",
+            "enum": [
+              "TSE",
+              "OTC",
+              "OES",
+              "TAIFEX",
+              "TIM"
+            ],
+            "type": "string"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "symbol": {
+            "title": "Symbol",
+            "type": "string",
+            "default": ""
+          },
+          "name": {
+            "title": "Name",
+            "type": "string",
+            "default": ""
+          },
+          "currency": {
+            "title": "Currency",
+            "enum": [
+              "TWD"
+            ],
+            "type": "string",
+            "default": "TWD"
+          }
+        }
+      },
+      "SnapshotsInput": {
+        "title": "SnapshotsInput",
+        "required": [
+          "contracts"
+        ],
+        "type": "object",
+        "properties": {
+          "contracts": {
+            "title": "Contracts",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BaseContract"
+            }
+          }
+        }
+      },
+      "ProLossDetailIn": {
+        "title": "ProLossDetailIn",
+        "required": [
+          "account",
+          "stock",
+          "ttype",
+          "tdate",
+          "seqno",
+          "price",
+          "dseq"
+        ],
+        "type": "object",
+        "properties": {
+          "account": {
+            "$ref": "#/components/schemas/Account"
+          },
+          "stock": {
+            "title": "Stock",
+            "type": "string"
+          },
+          "ttype": {
+            "title": "Ttype",
+            "type": "string"
+          },
+          "tdate": {
+            "title": "Tdate",
+            "type": "string"
+          },
+          "seqno": {
+            "title": "Seqno",
+            "type": "string"
+          },
+          "price": {
+            "title": "Price",
+            "type": "string"
+          },
+          "dseq": {
+            "title": "Dseq",
+            "type": "string"
+          }
+        }
+      },
+      "Snapshot": {
+        "title": "Snapshot",
+        "type": "object",
+        "properties": {
+          "ts": {
+            "title": "Ts",
+            "type": "integer",
+            "default": 0
+          },
+          "code": {
+            "title": "Code",
+            "type": "string",
+            "default": ""
+          },
+          "exchange": {
+            "title": "Exchange",
+            "type": "string",
+            "default": ""
+          },
+          "open": {
+            "title": "Open",
+            "type": "number",
+            "default": 0.0
+          },
+          "high": {
+            "title": "High",
+            "type": "number",
+            "default": 0.0
+          },
+          "low": {
+            "title": "Low",
+            "type": "number",
+            "default": 0.0
+          },
+          "close": {
+            "title": "Close",
+            "type": "number",
+            "default": 0.0
+          },
+          "tick_type": {
+            "title": "Tick Type",
+            "enum": [
+              "None",
+              "Buy",
+              "Sell"
+            ],
+            "type": "string",
+            "default": "None"
+          },
+          "change_price": {
+            "title": "Change Price",
+            "type": "number",
+            "default": 0.0
+          },
+          "change_rate": {
+            "title": "Change Rate",
+            "type": "number",
+            "default": 0.0
+          },
+          "change_type": {
+            "title": "Change Type",
+            "enum": [
+              "LimitUp",
+              "Up",
+              "Unchanged",
+              "Down",
+              "Dowm",
+              "LimitDown"
+            ],
+            "type": "string",
+            "default": "Unchanged"
+          },
+          "average_price": {
+            "title": "Average Price",
+            "type": "number",
+            "default": 0.0
+          },
+          "volume": {
+            "title": "Volume",
+            "type": "integer",
+            "default": 0
+          },
+          "total_volume": {
+            "title": "Total Volume",
+            "type": "integer",
+            "default": 0
+          },
+          "amount": {
+            "title": "Amount",
+            "type": "integer",
+            "default": 0
+          },
+          "total_amount": {
+            "title": "Total Amount",
+            "type": "integer",
+            "default": 0
+          },
+          "yesterday_volume": {
+            "title": "Yesterday Volume",
+            "type": "number",
+            "default": 0.0
+          },
+          "buy_price": {
+            "title": "Buy Price",
+            "type": "number",
+            "default": 0.0
+          },
+          "buy_volume": {
+            "title": "Buy Volume",
+            "type": "number",
+            "default": 0.0
+          },
+          "sell_price": {
+            "title": "Sell Price",
+            "type": "number",
+            "default": 0.0
+          },
+          "sell_volume": {
+            "title": "Sell Volume",
+            "type": "integer",
+            "default": 0
+          },
+          "volume_ratio": {
+            "title": "Volume Ratio",
+            "type": "number",
+            "default": 0.0
+          }
+        }
+      },
+      "Snapshots": {
+        "title": "Snapshots",
+        "required": [
+          "snapshot"
+        ],
+        "type": "object",
+        "properties": {
+          "snapshot": {
+            "title": "Snapshot",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Snapshot"
+            }
+          }
+        }
+      },
+      "AccountBalanceOut": {
+        "title": "AccountBalanceOut",
+        "required": [
+          "account",
+          "acc_balance",
+          "date",
+          "errmsg"
+        ],
+        "type": "object",
+        "properties": {
+          "account": {
+            "$ref": "#/components/schemas/Account"
+          },
+          "acc_balance": {
+            "title": "Acc Balance",
+            "type": "number"
+          },
+          "date": {
+            "title": "Date",
+            "type": "string"
+          },
+          "errmsg": {
+            "title": "Errmsg",
+            "type": "string"
+          }
+        }
+      },
+      "ShortStockSource": {
+        "title": "ShortStockSource",
+        "required": [
+          "code"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "short_stock_source": {
+            "title": "Short Stock Source",
+            "type": "integer",
+            "default": 0
+          },
+          "ts": {
+            "title": "Ts",
+            "type": "integer",
+            "default": 0
+          }
+        }
+      },
+      "ShortStockSources": {
+        "title": "ShortStockSources",
+        "required": [
+          "short_stock_sources"
+        ],
+        "type": "object",
+        "properties": {
+          "short_stock_sources": {
+            "title": "Short Stock Sources",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShortStockSource"
+            }
+          }
+        }
+      },
+      "ProfitLossIn": {
+        "title": "ProfitLossIn",
+        "required": [
+          "account"
+        ],
+        "type": "object",
+        "properties": {
+          "account": {
+            "$ref": "#/components/schemas/Account"
+          },
+          "begin_date": {
+            "title": "Begin Date",
+            "type": "string",
+            "default": ""
+          },
+          "end_date": {
+            "title": "End Date",
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
+      "Settlement": {
+        "title": "Settlement",
+        "required": [
+          "t_money",
+          "t1_money",
+          "t2_money",
+          "t_day",
+          "t1_day",
+          "t2_day"
+        ],
+        "type": "object",
+        "properties": {
+          "t_money": {
+            "title": "T Money",
+            "type": "number"
+          },
+          "t1_money": {
+            "title": "T1 Money",
+            "type": "number"
+          },
+          "t2_money": {
+            "title": "T2 Money",
+            "type": "number"
+          },
+          "t_day": {
+            "title": "T Day",
+            "type": "string"
+          },
+          "t1_day": {
+            "title": "T1 Day",
+            "type": "string"
+          },
+          "t2_day": {
+            "title": "T2 Day",
+            "type": "string"
+          }
+        }
+      },
+      "KbarInput": {
+        "title": "KbarInput",
+        "required": [
+          "contract",
+          "start",
+          "end"
+        ],
+        "type": "object",
+        "properties": {
+          "contract": {
+            "$ref": "#/components/schemas/BaseContract"
+          },
+          "start": {
+            "title": "Start",
+            "type": "string"
+          },
+          "end": {
+            "title": "End",
+            "type": "string"
+          }
+        }
+      },
+      "ErrorTrackingInput": {
+        "title": "ErrorTrackingInput",
+        "required": [
+          "person_id"
+        ],
+        "type": "object",
+        "properties": {
+          "person_id": {
+            "title": "Person Id",
+            "type": "string"
+          }
+        }
+      },
+      "Body_update_price_api_v1_order_update_price_post": {
+        "title": "Body_update_price_api_v1_order_update_price_post",
+        "required": [
+          "contract",
+          "order",
+          "price"
+        ],
+        "type": "object",
+        "properties": {
+          "contract": {
+            "$ref": "#/components/schemas/swrelaystation__api__v1__schema__contract__Contract"
+          },
+          "order": {
+            "$ref": "#/components/schemas/TradeOrder"
+          },
+          "price": {
+            "title": "Price",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "tft": {
+            "title": "Tft",
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "STSErrorResponse": {
+        "title": "STSErrorResponse",
+        "required": [
+          "detail",
+          "sts_code"
+        ],
+        "type": "object",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "string"
+          },
+          "sts_code": {
+            "title": "Sts Code",
+            "type": "integer"
+          }
+        }
+      },
+      "Ticks": {
+        "title": "Ticks",
+        "required": [
+          "ts",
+          "close",
+          "volume",
+          "bid_price",
+          "bid_volume",
+          "ask_price",
+          "ask_volume"
+        ],
+        "type": "object",
+        "properties": {
+          "ts": {
+            "title": "Ts",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "close": {
+            "title": "Close",
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "volume": {
+            "title": "Volume",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "bid_price": {
+            "title": "Bid Price",
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "bid_volume": {
+            "title": "Bid Volume",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "ask_price": {
+            "title": "Ask Price",
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "ask_volume": {
+            "title": "Ask Volume",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "CreditEnquire": {
+        "title": "CreditEnquire",
+        "type": "object",
+        "properties": {
+          "update_time": {
+            "title": "Update Time",
+            "type": "string",
+            "default": ""
+          },
+          "system": {
+            "title": "System",
+            "type": "string",
+            "default": ""
+          },
+          "stock_id": {
+            "title": "Stock Id",
+            "type": "string",
+            "default": ""
+          },
+          "margin_unit": {
+            "title": "Margin Unit",
+            "type": "integer",
+            "default": 0
+          },
+          "short_unit": {
+            "title": "Short Unit",
+            "type": "integer",
+            "default": 0
+          }
+        }
+      },
+      "CreditEnquires": {
+        "title": "CreditEnquires",
+        "required": [
+          "credit_enquire"
+        ],
+        "type": "object",
+        "properties": {
+          "credit_enquire": {
+            "title": "Credit Enquire",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreditEnquire"
+            }
+          }
+        }
+      },
+      "Body_echo_api_v1_dev_echo_post": {
+        "title": "Body_echo_api_v1_dev_echo_post",
+        "required": [
+          "order"
+        ],
+        "type": "object",
+        "properties": {
+          "order": {
+            "$ref": "#/components/schemas/swrelaystation__api__v1__endpoints__dev__echo__OrderFake"
+          }
+        }
+      },
+      "OrderIn": {
+        "title": "OrderIn",
+        "required": [
+          "action",
+          "price",
+          "quantity",
+          "account",
+          "price_type",
+          "order_type",
+          "ca"
+        ],
+        "type": "object",
+        "properties": {
+          "action": {
+            "title": "Action",
+            "enum": [
+              "Buy",
+              "Sell"
+            ],
+            "type": "string"
+          },
+          "price": {
+            "title": "Price",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "quantity": {
+            "title": "Quantity",
+            "exclusiveMinimum": 0.0,
+            "type": "integer"
+          },
+          "account": {
+            "$ref": "#/components/schemas/Account"
+          },
+          "price_type": {
+            "title": "Price Type",
+            "anyOf": [
+              {
+                "enum": [
+                  "LMT",
+                  "MKT"
+                ],
+                "type": "string"
+              },
+              {
+                "enum": [
+                  "LMT",
+                  "Close",
+                  "LimitUp",
+                  "LimitDown"
+                ],
+                "type": "string"
+              },
+              {
+                "enum": [
+                  "LMT",
+                  "MKT",
+                  "MKP"
+                ],
+                "type": "string"
+              }
+            ]
+          },
+          "order_type": {
+            "title": "Order Type",
+            "anyOf": [
+              {
+                "enum": [
+                  "ROD",
+                  "IOC",
+                  "FOK"
+                ],
+                "type": "string"
+              },
+              {
+                "enum": [
+                  "Common",
+                  "BlockTrade",
+                  "Fixing",
+                  "Odd",
+                  "IntradayOdd"
+                ],
+                "type": "string"
+              }
+            ]
+          },
+          "octype": {
+            "title": "Octype",
+            "enum": [
+              "Auto",
+              "New",
+              "Cover",
+              "DayTrade"
+            ],
+            "type": "string",
+            "default": "Auto"
+          },
+          "order_lot": {
+            "title": "Order Lot",
+            "enum": [
+              "Common",
+              "BlockTrade",
+              "Fixing",
+              "Odd",
+              "IntradayOdd"
+            ],
+            "type": "string",
+            "default": "Common"
+          },
+          "order_cond": {
+            "title": "Order Cond",
+            "enum": [
+              "Cash",
+              "Netting",
+              "MarginTrading",
+              "ShortSelling",
+              "Emerging"
+            ],
+            "type": "string",
+            "default": "Cash"
+          },
+          "market_type": {
+            "title": "Market Type",
+            "enum": [
+              "Day",
+              "Night"
+            ],
+            "type": "string",
+            "default": "Day"
+          },
+          "mttype": {
+            "title": "Mttype",
+            "type": "string",
+            "default": ""
+          },
+          "first_sell": {
+            "title": "First Sell",
+            "enum": [
+              "true",
+              "false"
+            ],
+            "type": "string",
+            "default": "false"
+          },
+          "ca": {
+            "title": "Ca",
+            "type": "string"
+          }
+        }
+      },
+      "TicksInput": {
+        "title": "TicksInput",
+        "required": [
+          "contract",
+          "date"
+        ],
+        "type": "object",
+        "properties": {
+          "contract": {
+            "$ref": "#/components/schemas/BaseContract"
+          },
+          "date": {
+            "title": "Date",
+            "type": "string"
+          }
+        }
+      },
+      "Stock": {
+        "title": "Stock",
+        "required": [
+          "exchange",
+          "code",
+          "category",
+          "limit_up",
+          "limit_down",
+          "reference",
+          "update_date",
+          "day_trade"
+        ],
+        "type": "object",
+        "properties": {
+          "security_type": {
+            "title": "Security Type",
+            "enum": [
+              "IND",
+              "STK",
+              "FUT",
+              "OPT"
+            ],
+            "type": "string",
+            "default": "STK"
+          },
+          "exchange": {
+            "title": "Exchange",
+            "enum": [
+              "TSE",
+              "OTC",
+              "OES",
+              "TAIFEX",
+              "TIM"
+            ],
+            "type": "string"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "symbol": {
+            "title": "Symbol",
+            "type": "string",
+            "default": ""
+          },
+          "name": {
+            "title": "Name",
+            "type": "string",
+            "default": ""
+          },
+          "currency": {
+            "title": "Currency",
+            "enum": [
+              "TWD"
+            ],
+            "type": "string",
+            "default": "TWD"
+          },
+          "category": {
+            "title": "Category",
+            "type": "string"
+          },
+          "limit_up": {
+            "title": "Limit Up",
+            "type": "number"
+          },
+          "limit_down": {
+            "title": "Limit Down",
+            "type": "number"
+          },
+          "reference": {
+            "title": "Reference",
+            "type": "number"
+          },
+          "update_date": {
+            "title": "Update Date",
+            "type": "string"
+          },
+          "margin_trading_balance": {
+            "title": "Margin Trading Balance",
+            "type": "integer",
+            "default": 0
+          },
+          "short_selling_balance": {
+            "title": "Short Selling Balance",
+            "type": "integer",
+            "default": 0
+          },
+          "day_trade": {
+            "title": "Day Trade",
+            "enum": [
+              "Yes",
+              "OnlyBuy",
+              "No"
+            ],
+            "type": "string"
+          }
+        }
+      },
+      "CreditEnquireInput": {
+        "title": "CreditEnquireInput",
+        "required": [
+          "contracts"
+        ],
+        "type": "object",
+        "properties": {
+          "contracts": {
+            "title": "Contracts",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Stock"
+            }
+          }
+        }
+      },
+      "Position": {
+        "title": "Position",
+        "required": [
+          "code",
+          "direction",
+          "quantity",
+          "price",
+          "pnl",
+          "yd_quantity"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "direction": {
+            "title": "Direction",
+            "enum": [
+              "Buy",
+              "Sell"
+            ],
+            "type": "string"
+          },
+          "quantity": {
+            "title": "Quantity",
+            "type": "integer"
+          },
+          "price": {
+            "title": "Price",
+            "type": "number"
+          },
+          "pnl": {
+            "title": "Pnl",
+            "type": "number"
+          },
+          "yd_quantity": {
+            "title": "Yd Quantity",
+            "type": "integer"
+          },
+          "cond": {
+            "title": "Cond",
+            "enum": [
+              "Cash",
+              "Netting",
+              "MarginTrading",
+              "ShortSelling",
+              "Emerging"
+            ],
+            "type": "string",
+            "default": "Cash"
+          }
+        }
+      },
+      "Positions": {
+        "title": "Positions",
+        "required": [
+          "positions",
+          "account"
+        ],
+        "type": "object",
+        "properties": {
+          "positions": {
+            "title": "Positions",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Position"
+            }
+          },
+          "account": {
+            "$ref": "#/components/schemas/Account"
+          }
+        }
+      },
+      "B64Validation": {
+        "title": "B64Validation",
+        "required": [
+          "b64content"
+        ],
+        "type": "object",
+        "properties": {
+          "b64content": {
+            "title": "B64Content",
+            "type": "string"
+          }
+        }
+      },
+      "UpdateStatusIn": {
+        "title": "UpdateStatusIn",
+        "required": [
+          "account"
+        ],
+        "type": "object",
+        "properties": {
+          "account": {
+            "$ref": "#/components/schemas/Account"
+          },
+          "seqno": {
+            "title": "Seqno",
+            "type": "string"
+          },
+          "tft": {
+            "title": "Tft",
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "B64ValidationOut": {
+        "title": "B64ValidationOut",
+        "required": [
+          "vali"
+        ],
+        "type": "object",
+        "properties": {
+          "vali": {
+            "title": "Vali",
+            "type": "boolean"
+          }
+        }
+      },
+      "ContractsInput": {
+        "title": "ContractsInput",
+        "required": [
+          "security_type"
+        ],
+        "type": "object",
+        "properties": {
+          "security_type": {
+            "title": "Security Type",
+            "enum": [
+              "IND",
+              "STK",
+              "FUT",
+              "OPT"
+            ],
+            "type": "string"
+          },
+          "page": {
+            "title": "Page",
+            "type": "integer",
+            "default": -1
+          },
+          "page_size": {
+            "title": "Page Size",
+            "type": "integer",
+            "default": 1000
+          }
+        }
+      },
+      "Body_place_order_api_v1_order_place_order_post": {
+        "title": "Body_place_order_api_v1_order_place_order_post",
+        "required": [
+          "contract",
+          "order"
+        ],
+        "type": "object",
+        "properties": {
+          "contract": {
+            "$ref": "#/components/schemas/swrelaystation__api__v1__schema__contract__Contract"
+          },
+          "order": {
+            "$ref": "#/components/schemas/OrderIn"
+          },
+          "tft": {
+            "title": "Tft",
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "ProfitDetail": {
+        "title": "ProfitDetail",
+        "required": [
+          "date",
+          "code",
+          "quantity",
+          "price",
+          "cost",
+          "dseq",
+          "rep_margintrading_amt",
+          "rep_collateral",
+          "rep_margin",
+          "fee",
+          "interest",
+          "tax",
+          "shortselling_fee",
+          "currency"
+        ],
+        "type": "object",
+        "properties": {
+          "date": {
+            "title": "Date",
+            "type": "string"
+          },
+          "cond": {
+            "title": "Cond",
+            "enum": [
+              "Cash",
+              "Netting",
+              "MarginTrading",
+              "ShortSelling",
+              "Emerging"
+            ],
+            "type": "string",
+            "default": "Cash"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "quantity": {
+            "title": "Quantity",
+            "type": "integer"
+          },
+          "price": {
+            "title": "Price",
+            "type": "number"
+          },
+          "cost": {
+            "title": "Cost",
+            "type": "integer"
+          },
+          "dseq": {
+            "title": "Dseq",
+            "type": "string"
+          },
+          "rep_margintrading_amt": {
+            "title": "Rep Margintrading Amt",
+            "type": "integer"
+          },
+          "rep_collateral": {
+            "title": "Rep Collateral",
+            "type": "integer"
+          },
+          "rep_margin": {
+            "title": "Rep Margin",
+            "type": "integer"
+          },
+          "fee": {
+            "title": "Fee",
+            "type": "integer"
+          },
+          "interest": {
+            "title": "Interest",
+            "type": "integer"
+          },
+          "tax": {
+            "title": "Tax",
+            "type": "integer"
+          },
+          "shortselling_fee": {
+            "title": "Shortselling Fee",
+            "type": "integer"
+          },
+          "currency": {
+            "title": "Currency",
+            "type": "string"
+          }
+        }
+      },
+      "ProfitDetailList": {
+        "title": "ProfitDetailList",
+        "required": [
+          "profitdetail",
+          "account"
+        ],
+        "type": "object",
+        "properties": {
+          "profitdetail": {
+            "title": "Profitdetail",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProfitDetail"
+            }
+          },
+          "account": {
+            "$ref": "#/components/schemas/Account"
+          }
+        }
+      },
+      "LoginIn": {
+        "title": "LoginIn",
+        "required": [
+          "person_id",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "person_id": {
+            "title": "Person Id",
+            "type": "string"
+          },
+          "password": {
+            "title": "Password",
+            "type": "string",
+            "writeOnly": true
+          },
+          "ip_address": {
+            "title": "Ip Address",
+            "type": "string",
+            "format": "ipv4",
+            "default": "0.0.0.0"
+          },
+          "simulation": {
+            "title": "Simulation",
+            "type": "boolean",
+            "default": false
+          },
+          "hashed": {
+            "title": "Hashed",
+            "type": "boolean",
+            "default": false
+          },
+          "version": {
+            "title": "Version",
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
+      "Body_update_qty_api_v1_order_update_qty_post": {
+        "title": "Body_update_qty_api_v1_order_update_qty_post",
+        "required": [
+          "contract",
+          "order",
+          "quantity"
+        ],
+        "type": "object",
+        "properties": {
+          "contract": {
+            "$ref": "#/components/schemas/swrelaystation__api__v1__schema__contract__Contract"
+          },
+          "order": {
+            "$ref": "#/components/schemas/TradeOrder"
+          },
+          "quantity": {
+            "title": "Quantity",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "tft": {
+            "title": "Tft",
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "Settlements": {
+        "title": "Settlements",
+        "required": [
+          "settlements",
+          "account"
+        ],
+        "type": "object",
+        "properties": {
+          "settlements": {
+            "title": "Settlements",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Settlement"
+            }
+          },
+          "account": {
+            "$ref": "#/components/schemas/Account"
+          }
+        }
+      },
+      "StockInput": {
+        "title": "StockInput",
+        "required": [
+          "contracts"
+        ],
+        "type": "object",
+        "properties": {
+          "contracts": {
+            "title": "Contracts",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Stock"
+            }
+          }
+        }
+      },
+      "Kbars": {
+        "title": "Kbars",
+        "required": [
+          "ts",
+          "Open",
+          "High",
+          "Low",
+          "Close",
+          "Volume"
+        ],
+        "type": "object",
+        "properties": {
+          "ts": {
+            "title": "Ts",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "Open": {
+            "title": "Open",
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "High": {
+            "title": "High",
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "Low": {
+            "title": "Low",
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "Close": {
+            "title": "Close",
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "Volume": {
+            "title": "Volume",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "ProfitLoss": {
+        "title": "ProfitLoss",
+        "required": [
+          "id",
+          "code",
+          "seqno",
+          "dseq",
+          "quantity",
+          "price",
+          "pnl",
+          "pr_ratio",
+          "date"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "seqno": {
+            "title": "Seqno",
+            "type": "string"
+          },
+          "dseq": {
+            "title": "Dseq",
+            "type": "string"
+          },
+          "quantity": {
+            "title": "Quantity",
+            "type": "integer"
+          },
+          "price": {
+            "title": "Price",
+            "type": "number"
+          },
+          "pnl": {
+            "title": "Pnl",
+            "type": "number"
+          },
+          "pr_ratio": {
+            "title": "Pr Ratio",
+            "type": "number"
+          },
+          "cond": {
+            "title": "Cond",
+            "enum": [
+              "Cash",
+              "Netting",
+              "MarginTrading",
+              "ShortSelling",
+              "Emerging"
+            ],
+            "type": "string",
+            "default": "Cash"
+          },
+          "date": {
+            "title": "Date",
+            "type": "string"
+          }
+        }
+      },
+      "ProfitLossList": {
+        "title": "ProfitLossList",
+        "required": [
+          "profitloss",
+          "account"
+        ],
+        "type": "object",
+        "properties": {
+          "profitloss": {
+            "title": "Profitloss",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProfitLoss"
+            }
+          },
+          "account": {
+            "$ref": "#/components/schemas/Account"
+          }
+        }
+      },
+      "ErrorTrackingOutput": {
+        "title": "ErrorTrackingOutput",
+        "required": [
+          "error_tracking"
+        ],
+        "type": "object",
+        "properties": {
+          "error_tracking": {
+            "title": "Error Tracking",
+            "type": "boolean"
+          }
+        }
+      },
+      "swrelaystation__api__v1__schema__trade__Trade": {
+        "title": "Trade",
+        "required": [
+          "contract",
+          "order",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "contract": {
+            "$ref": "#/components/schemas/swrelaystation__api__v1__schema__contract__Contract"
+          },
+          "order": {
+            "$ref": "#/components/schemas/TradeOrder"
+          },
+          "status": {
+            "$ref": "#/components/schemas/OrderStatus"
+          }
+        }
+      },
+      "ValidationError": {
+        "title": "ValidationError",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "loc": {
+            "title": "Location",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        }
+      },
+      "SOSValidationError": {
+        "title": "SOSValidationError",
+        "type": "object",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "APIKeyBody": {
+        "type": "apiKey",
+        "in": "body",
+        "name": "token"
+      }
+    }
+  }
+}
